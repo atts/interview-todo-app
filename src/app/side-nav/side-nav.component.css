@@ -1,0 +1,37 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.item-text{
+  padding: 0 30px 0 20px;
+  font-size: 18px !important;
+  text-decoration: none ;
+}
+
+.striked{
+  padding: 0 30px 0 20px;
+  font-size: 18px !important;
+  text-decoration: line-through ;
+}
+
+.list-area{
+  padding: 30px!important;
+}
+
+.list-item-area{
+  padding: 10px !important;
+}

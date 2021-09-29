@@ -1,0 +1,29 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a *ngFor="let category of categories" (click)="selectCategory($event)" mat-list-item href="#">{{category}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <h3>{{selectedCategory}}</h3>
+    </mat-toolbar>
+    <div class="list-area">
+      <mat-list-item role="listitem" *ngFor="let item of selectedData">
+        <div class="list-item-area">
+          <mat-checkbox class="example-margin" [checked]="item.striked" (change)="handleCheckBox(item.id)">
+          </mat-checkbox>
+          <span [ngClass]="{'striked':item.striked, 'item-text':!item.striked }" class="item-text">{{item.value}}</span>
+          <button mat-flat-button class="cross-button" (click)="deleteItem(item.id)">&#10005;</button>
+        </div>
+      </mat-list-item>
+      <br>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
